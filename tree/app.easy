@@ -1,0 +1,533 @@
+{
+    "_id_": 1,
+    "_type": "App",
+    "features": {
+        "_id_": 2,
+        "_type": "App.Features",
+        "list_": [
+            {
+                "_id_": 3,
+                "_type": "Variable",
+                "init": {
+                    "_id_": 4,
+                    "_type": "String.Text",
+                    "value": {
+                        "_id_": 5,
+                        "_type": "String",
+                        "value_": "https:\/\/google.com"
+                    }
+                },
+                "name": {
+                    "_id_": 6,
+                    "_type": "String",
+                    "value_": "URL"
+                },
+                "comment": {
+                    "_id_": 7,
+                    "_type": "Comment",
+                    "list_": [],
+                    "text_": "Change it to what you need."
+                }
+            },
+            {
+                "_id_": 8,
+                "_type": "Activity",
+                "features": {
+                    "_id_": 9,
+                    "_type": "Activity.Features",
+                    "list_": []
+                },
+                "theme": {
+                    "_id_": 10,
+                    "_type": "Theme.DayNight"
+                },
+                "contentView": {
+                    "_id_": 11,
+                    "_type": "RelativeLayout",
+                    "id": {
+                        "_id_": 12,
+                        "_type": "String",
+                        "value_": ""
+                    },
+                    "views": {
+                        "_id_": 13,
+                        "_type": "ViewList",
+                        "list_": [
+                            {
+                                "_id_": 14,
+                                "_type": "SwipeRefreshLayout",
+                                "id": {
+                                    "_id_": 15,
+                                    "_type": "String",
+                                    "value_": ""
+                                },
+                                "views": {
+                                    "_id_": 16,
+                                    "_type": "ViewList",
+                                    "list_": [
+                                        {
+                                            "_id_": 17,
+                                            "_type": "WebView",
+                                            "loadProgressBar": {
+                                                "_id_": 18,
+                                                "_type": "View.Reference",
+                                                "ref": {
+                                                    "_id_": 19,
+                                                    "_type": "String",
+                                                    "value_": "@id\/progress"
+                                                }
+                                            },
+                                            "webViewClient": {
+                                                "_id_": 20,
+                                                "_type": "WebView.WebViewClient",
+                                                "onReceivedError": {
+                                                    "_id_": 21,
+                                                    "_type": "Sequence",
+                                                    "list_": [
+                                                        {
+                                                            "_id_": 22,
+                                                            "_type": "ScopeVariable",
+                                                            "name": {
+                                                                "_id_": 23,
+                                                                "_type": "String",
+                                                                "value_": "view"
+                                                            }
+                                                        },
+                                                        {
+                                                            "_id_": 24,
+                                                            "_type": "ScopeVariable",
+                                                            "name": {
+                                                                "_id_": 25,
+                                                                "_type": "String",
+                                                                "value_": "request"
+                                                            }
+                                                        },
+                                                        {
+                                                            "_id_": 26,
+                                                            "_type": "ScopeVariable",
+                                                            "name": {
+                                                                "_id_": 27,
+                                                                "_type": "String",
+                                                                "value_": "error"
+                                                            }
+                                                        },
+                                                        {
+                                                            "_id_": 28,
+                                                            "_type": "CheckValue",
+                                                            "onTrue": {
+                                                                "_id_": 29,
+                                                                "_type": "Sequence",
+                                                                "list_": [
+                                                                    {
+                                                                        "_id_": 30,
+                                                                        "_type": "TextView.SetText",
+                                                                        "view": {
+                                                                            "_id_": 31,
+                                                                            "_type": "View.Reference",
+                                                                            "ref": {
+                                                                                "_id_": 32,
+                                                                                "_type": "String",
+                                                                                "value_": "@id\/errorMessage"
+                                                                            }
+                                                                        },
+                                                                        "text": {
+                                                                            "_id_": 33,
+                                                                            "_type": "Call",
+                                                                            "name": {
+                                                                                "_id_": 34,
+                                                                                "_type": "String",
+                                                                                "value_": "getDescription"
+                                                                            },
+                                                                            "thisObject": {
+                                                                                "_id_": 35,
+                                                                                "_type": "LocalVariable.Get",
+                                                                                "name": {
+                                                                                    "_id_": 36,
+                                                                                    "_type": "String",
+                                                                                    "value_": "error"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "_id_": 37,
+                                                                        "_type": "View.Show",
+                                                                        "view": {
+                                                                            "_id_": 38,
+                                                                            "_type": "View.Reference",
+                                                                            "ref": {
+                                                                                "_id_": 39,
+                                                                                "_type": "String",
+                                                                                "value_": "@id\/errorPanel"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "_id_": 40,
+                                                                        "_type": "Expression",
+                                                                        "comment": {
+                                                                            "_id_": 41,
+                                                                            "_type": "Comment",
+                                                                            "list_": [],
+                                                                            "text_": "This prevents the WebView from reacting on the back button."
+                                                                        },
+                                                                        "text": {
+                                                                            "_id_": 42,
+                                                                            "_type": "String",
+                                                                            "value_": "view.clearFocus()"
+                                                                        }
+                                                                    }
+                                                                ]
+                                                            },
+                                                            "value": {
+                                                                "_id_": 43,
+                                                                "_type": "Expression",
+                                                                "text": {
+                                                                    "_id_": 44,
+                                                                    "_type": "String",
+                                                                    "value_": "request.isForMainFrame()"
+                                                                }
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            },
+                                            "id": {
+                                                "_id_": 45,
+                                                "_type": "String",
+                                                "value_": "webView"
+                                            },
+                                            "urlValue": {
+                                                "_id_": 46,
+                                                "_type": "Variable.Get",
+                                                "name": {
+                                                    "_id_": 47,
+                                                    "_type": "String",
+                                                    "value_": "URL"
+                                                }
+                                            },
+                                            "android:background": {
+                                                "_id_": 48,
+                                                "_type": "Color",
+                                                "color_": -1
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "_id_": 49,
+                                "_type": "ProgressBar",
+                                "id": {
+                                    "_id_": 50,
+                                    "_type": "String",
+                                    "value_": "progress"
+                                },
+                                "android:layout_width": {
+                                    "_id_": 51,
+                                    "_type": "View.SpecialDimension",
+                                    "value_": "match_parent"
+                                },
+                                "android:layout_height": {
+                                    "_id_": 52,
+                                    "_type": "Dimension",
+                                    "unit": {
+                                        "_id_": 53,
+                                        "_type": "DimensionUnit",
+                                        "value_": "dp"
+                                    },
+                                    "value": {
+                                        "_id_": 54,
+                                        "_type": "Float",
+                                        "value_": 2
+                                    }
+                                }
+                            },
+                            {
+                                "_id_": 55,
+                                "_type": "RelativeLayout",
+                                "id": {
+                                    "_id_": 56,
+                                    "_type": "String",
+                                    "value_": "errorPanel"
+                                },
+                                "views": {
+                                    "_id_": 57,
+                                    "_type": "ViewList",
+                                    "list_": [
+                                        {
+                                            "_id_": 58,
+                                            "_type": "LinearLayout",
+                                            "id": {
+                                                "_id_": 59,
+                                                "_type": "String",
+                                                "value_": ""
+                                            },
+                                            "views": {
+                                                "_id_": 60,
+                                                "_type": "ViewList",
+                                                "list_": [
+                                                    {
+                                                        "_id_": 61,
+                                                        "_type": "TextView",
+                                                        "id": {
+                                                            "_id_": 62,
+                                                            "_type": "String",
+                                                            "value_": "errorHeader"
+                                                        },
+                                                        "android:text": {
+                                                            "_id_": 63,
+                                                            "_type": "String",
+                                                            "value_": "Error"
+                                                        },
+                                                        "android:textSize": {
+                                                            "_id_": 64,
+                                                            "_type": "Dimension",
+                                                            "unit": {
+                                                                "_id_": 65,
+                                                                "_type": "DimensionUnit",
+                                                                "value_": "sp"
+                                                            },
+                                                            "value": {
+                                                                "_id_": 66,
+                                                                "_type": "Float",
+                                                                "value_": 40
+                                                            }
+                                                        },
+                                                        "android:textColor": {
+                                                            "_id_": 67,
+                                                            "_type": "Color",
+                                                            "color_": -4252112
+                                                        }
+                                                    },
+                                                    {
+                                                        "_id_": 68,
+                                                        "_type": "TextView",
+                                                        "id": {
+                                                            "_id_": 69,
+                                                            "_type": "String",
+                                                            "value_": "errorMessage"
+                                                        },
+                                                        "android:textSize": {
+                                                            "_id_": 70,
+                                                            "_type": "Dimension",
+                                                            "unit": {
+                                                                "_id_": 71,
+                                                                "_type": "DimensionUnit",
+                                                                "value_": "sp"
+                                                            },
+                                                            "value": {
+                                                                "_id_": 72,
+                                                                "_type": "Float",
+                                                                "value_": 10
+                                                            }
+                                                        },
+                                                        "android:textColor": {
+                                                            "_id_": 73,
+                                                            "_type": "Color",
+                                                            "color_": -4252112
+                                                        }
+                                                    },
+                                                    {
+                                                        "_id_": 74,
+                                                        "_type": "Button",
+                                                        "onClick": {
+                                                            "_id_": 75,
+                                                            "_type": "Sequence",
+                                                            "list_": [
+                                                                {
+                                                                    "_id_": 76,
+                                                                    "_type": "Expression",
+                                                                    "text": {
+                                                                        "_id_": 77,
+                                                                        "_type": "String",
+                                                                        "value_": "views.webView.reload()"
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "_id_": 78,
+                                                                    "_type": "View.Hide",
+                                                                    "view": {
+                                                                        "_id_": 79,
+                                                                        "_type": "View.Reference",
+                                                                        "ref": {
+                                                                            "_id_": 80,
+                                                                            "_type": "String",
+                                                                            "value_": "@id\/errorPanel"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
+                                                                    "_id_": 81,
+                                                                    "_type": "Expression",
+                                                                    "text": {
+                                                                        "_id_": 82,
+                                                                        "_type": "String",
+                                                                        "value_": "views.webView.requestFocus()"
+                                                                    }
+                                                                }
+                                                            ]
+                                                        },
+                                                        "id": {
+                                                            "_id_": 83,
+                                                            "_type": "String",
+                                                            "value_": ""
+                                                        },
+                                                        "android:text": {
+                                                            "_id_": 84,
+                                                            "_type": "String",
+                                                            "value_": "Reload"
+                                                        }
+                                                    }
+                                                ]
+                                            },
+                                            "android:layout_width": {
+                                                "_id_": 85,
+                                                "_type": "View.SpecialDimension",
+                                                "value_": "wrap_content"
+                                            },
+                                            "android:layout_height": {
+                                                "_id_": 86,
+                                                "_type": "View.SpecialDimension",
+                                                "value_": "wrap_content"
+                                            },
+                                            "android:layout_centerInParent": {
+                                                "_id_": 87,
+                                                "_type": "Boolean",
+                                                "value_": true
+                                            },
+                                            "android:gravity": {
+                                                "_id_": 88,
+                                                "_type": "Gravity",
+                                                "value_": "center"
+                                            },
+                                            "android:orientation": {
+                                                "_id_": 89,
+                                                "_type": "Orientation",
+                                                "value_": "vertical"
+                                            }
+                                        }
+                                    ]
+                                },
+                                "comment": {
+                                    "_id_": 90,
+                                    "_type": "Comment",
+                                    "list_": [],
+                                    "text_": "This view is shown when the WebView fails to load a page, usually because of a connection problem."
+                                },
+                                "android:background": {
+                                    "_id_": 91,
+                                    "_type": "Color",
+                                    "color_": -5856868
+                                },
+                                "android:visibility": {
+                                    "_id_": 92,
+                                    "_type": "View.Visibility",
+                                    "value_": "gone"
+                                }
+                            }
+                        ]
+                    }
+                },
+                "name": {
+                    "_id_": 93,
+                    "_type": "String",
+                    "value_": "Main"
+                },
+                "launcher": {
+                    "_id_": 94,
+                    "_type": "Activity.Launcher"
+                }
+            }
+        ]
+    },
+    "settings": {
+        "_id_": 95,
+        "_type": "App.Settings",
+        "debugBuild": {
+            "_id_": 96,
+            "_type": "App.Settings.DebugBuild"
+        },
+        "releaseBuild": {
+            "_id_": 97,
+            "_type": "App.Settings.ReleaseBuild"
+        }
+    },
+    "packaging": {
+        "_id_": 98,
+        "_type": "App.Packaging",
+        "icon": {
+            "_id_": 99,
+            "_type": "AdaptiveIcon",
+            "background": {
+                "_id_": 100,
+                "_type": "Color",
+                "color_": -1
+            },
+            "foreground": {
+                "_type": "DrawableReference",
+                "ref": {
+                    "_type": "String",
+                    "value_": "@drawable\/app_icon",
+                    "_id_": 102
+                },
+                "_id_": 101
+            },
+            "legacyIcon": {
+                "_type": "MipmapReference",
+                "ref": {
+                    "_type": "String",
+                    "value_": "@mipmap\/app_icon",
+                    "_id_": 104
+                },
+                "_id_": 103
+            }
+        },
+        "targetSdk": {
+            "_id_": 105,
+            "_type": "Integer",
+            "value_": 33
+        },
+        "label": {
+            "_id_": 106,
+            "_type": "String",
+            "value_": "Website App"
+        },
+        "versionName": {
+            "_id_": 107,
+            "_type": "String",
+            "value_": "1.0"
+        },
+        "versionCode": {
+            "_id_": 108,
+            "_type": "Integer",
+            "value_": 1
+        },
+        "minSdk": {
+            "_id_": 109,
+            "_type": "Integer",
+            "value_": 24
+        },
+        "permissions": {
+            "_id_": 110,
+            "_type": "App.Permissions",
+            "INTERNET": {
+                "_id_": 111,
+                "_type": "Boolean",
+                "value_": true
+            }
+        },
+        "packageName": {
+            "_id_": 112,
+            "_type": "String",
+            "value_": "com.aaappps.website"
+        }
+    },
+    "comment": {
+        "_id_": 113,
+        "_type": "Comment",
+        "list_": [],
+        "text_": "This app shows a website. Just change the URL to what you need."
+    },
+    "_abVer": 220
+}
